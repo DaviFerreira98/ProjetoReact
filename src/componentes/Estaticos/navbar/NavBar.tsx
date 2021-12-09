@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import {useHistory } from 'react-router-dom'
 import useLocalStorage from 'react-use-localstorage';
 
-import './Navbar.css'
+import './NavBar.css'
 function Navbar() {
     const [token, setToken] = useLocalStorage('token');
     let history = useHistory();

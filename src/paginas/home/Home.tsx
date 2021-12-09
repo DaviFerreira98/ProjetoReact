@@ -1,9 +1,22 @@
-import React from 'react';
-import {Typography, Box, Grid, Button} from '@material-ui/core';
+import React, { useEffect } from 'react';
+import { Typography, Box, Grid, Button } from '@material-ui/core';
 import './Home.css';
-import TabPostagem from '../../componentes/postagens/tabpostagens/tabpostagem';
+import ModalPostagem from '../../componentes/postagens/modalPostagem/ModalPostagem';
+import TabPostagem from '../../componentes/postagens/tabpostagens/TabPostagem';
+import { useHistory } from 'react-router-dom';
+import useLocalStorage from 'react-use-localstorage';
 
 function Home() {
+    let history = useHistory();
+    const [token, setToken] = useLocalStorage('token');
+
+    useEffect(() => {
+        if (token == "") {
+            alert("Você precisa estar logado")
+            history.push("/login")
+
+        }
+    }, [token])
     return (
         <>
             <Grid container direction="row" justifyContent="center" alignItems="center" className='caixa'>
@@ -14,6 +27,7 @@ function Home() {
                     </Box>
                     <Box display="flex" justifyContent="center">
                         <Box marginRight={1}>
+                            <ModalPostagem />
                         </Box>
                         <Button variant="outlined" className='botao'>Ver Postagens</Button>
                     </Box>
