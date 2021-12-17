@@ -34,11 +34,11 @@ function Navbar() {
     var navbarComponent;
 
     if(token != ""){
-        navbarComponent = <AppBar position="static">
+        navbarComponent = <AppBar position="static" id="navegacao">
         <Toolbar variant="dense">
             <Box className='cursor'>
                 <Typography variant="h5" color="inherit">
-                    BlogPessoal
+                    Davi's Blog
                 </Typography>
             </Box>
 
