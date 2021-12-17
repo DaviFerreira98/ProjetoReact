@@ -3,4 +3,4 @@ interface Tema{
     descricao: string;
 }
 
-export default Tema
+export default Tema;

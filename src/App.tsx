@@ -1,51 +1,55 @@
 import React from 'react';
-import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
-import NavBar from './componentes/Estaticos/navbar/NavBar';
-import Footer from './componentes/Estaticos/footer/Footer';
-import Home from './paginas/home/Home'
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import Navbar from './components/estaticos/navbar/Navbar';
+import Footer from './components/estaticos/footer/Footer';
+import CadastroUsuario from './paginas/cadastroUsuario/CadastroUsuario';
+import Home from './paginas/home/Home';
 import Login from './paginas/login/Login';
 import './App.css';
-import CadastroUsuario from './paginas/cadastroUsuario/CadastroUsuario';
-import ListaTema from './componentes/temas/listatemas/ListaTema';
-import ListaPostagem from './componentes/postagens/listapostagem/ListaPostagem';
-import CadastroPost from './componentes/postagens/cadastroPostagem/CadastroPost';
-import CadastroTema from './componentes/temas/cadastroTema/CadastroTema';
-import DeletarPostagem from './componentes/postagens/deletarPostagem/DeletarPostagem';
-import DeletarTema from './componentes/temas/deletarTema/DeletarTema';
+import ListaTema from './components/temas/listatema/ListaTema';
+import ListaPostagem from './components/postagens/listapostagem/ListaPostagem';
+import CadastroPost from './components/postagens/cadastroPost/CadastroPost';
+import CadastroTema from './components/temas/cadastroTema/CadastroTema';
+import DeletarPostagem from './components/postagens/deletarPostagem/DeletarPostagem';
+import DeletarTema from './components/temas/deletarTema/DeletarTema';
+import {Provider} from 'react-redux';
+import store from './store/store';
+import {ToastContainer} from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 function App() {
   return (
-    <>
-      <Router>
-        <NavBar />
-        <switch>
-          <div style ={{minHeight: '100vh'}}>
-          <Route exact path ='/'>
-              <Login />
-            </Route>
-            
-          <Route path ='/login'>
-              <Login />
-            </Route>
+    <Provider store={store}>
+      <ToastContainer />
+    <Router>
+      <Navbar />
+      <Switch>
+        <div style={{ minHeight: '100vh' }}>
 
-            <Route path ='/home'>
-              <Home />
-            </Route>
+          <Route exact path='/'>
+            <Login />
+          </Route>
 
-            <Route path ='/cadastrousuario'>
-              <CadastroUsuario />
-            </Route>
+          <Route path='/login'>
+            <Login />
+          </Route>
 
-            <Route path ='/temas'>
-              <ListaTema />
-            </Route>
+          <Route path='/home'>
+            <Home />
+          </Route>
 
-            <Route path ='/post'>
-              <ListaPostagem />
-            </Route>
+          <Route path='/cadastrousuario'>
+            <CadastroUsuario />
+          </Route>
+          <Route path='/temas'>
+            <ListaTema />
+          </Route>
+          <Route path='/posts'>
+            <ListaPostagem />
+          </Route>
 
-            <Route exact path='/formularioPostagem'>
+          <Route exact path='/formularioPostagem'>
             <CadastroPost />
           </Route>
           <Route exact path='/formularioPostagem/:id'>
@@ -65,11 +69,11 @@ function App() {
           </Route>
 
 
-          </div>
-        </switch>
-        <Footer />
-      </Router>
-    </>
+        </div>
+      </Switch>
+      <Footer />
+    </Router>
+    </Provider>
   );
 }
 
